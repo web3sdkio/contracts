@@ -1,7 +1,7 @@
 {
   "name": "@web3sdkio/contracts",
   "description": "",
-  "version": "1.0.0",
+  "version": "2.3.0-6",
   "license": "Apache-2.0",
   "source": "typechain/index.ts",
   "files": [
@@ -15,7 +15,7 @@
     "@openzeppelin/contracts": "4.7.3",
     "@openzeppelin/contracts-upgradeable": "4.7.3",
     "@primitivefi/hardhat-dodoc": "^0.2.0",
-    "@web3sdkio/sdk": "^1.0.0",
+    "@web3sdkio/sdk": "^3.4.1",
     "@typechain/ethers-v5": "^10.0.0",
     "@typechain/hardhat": "^4.0.0",
     "@types/fs-extra": "^9.0.13",
