@@ -65,7 +65,10 @@ contract ContractPublisher is IContractPublisher, ERC2771Context, AccessControlE
         view
         returns (CustomContractInstance[] memory published)
     {
-        CustomContractInstance[] memory linkedData = prevPublisher.getAllPublishedContracts(_publisher);
+        CustomContractInstance[] memory linkedData;
+        if (address(prevPublisher) != address(0)) {
+            linkedData = prevPublisher.getAllPublishedContracts(_publisher);
+        }
         uint256 currentTotal = EnumerableSet.length(contractsOfPublisher[_publisher].contractIds);
         uint256 prevTotal = linkedData.length;
         uint256 total = prevTotal + currentTotal;
@@ -87,10 +90,13 @@ contract ContractPublisher is IContractPublisher, ERC2771Context, AccessControlE
         view
         returns (CustomContractInstance[] memory published)
     {
-        CustomContractInstance[] memory linkedVersions = prevPublisher.getPublishedContractVersions(
-            _publisher,
-            _contractId
-        );
+        CustomContractInstance[] memory linkedVersions;
+        if (address(prevPublisher) != address(0)) {
+            linkedVersions = prevPublisher.getPublishedContractVersions(
+                _publisher,
+                _contractId
+            );
+        }
         uint256 prevTotal = linkedVersions.length;
 
         bytes32 id = keccak256(bytes(_contractId));
@@ -117,7 +123,7 @@ contract ContractPublisher is IContractPublisher, ERC2771Context, AccessControlE
     {
         published = contractsOfPublisher[_publisher].contracts[keccak256(bytes(_contractId))].latest;
         // if not found, check the previous publisher
-        if (published.publishTimestamp == 0) {
+        if (published.publishTimestamp == 0 && address(prevPublisher) != address(0)) {
             published = prevPublisher.getPublishedContract(_publisher, _contractId);
         }
     }
@@ -187,7 +193,7 @@ contract ContractPublisher is IContractPublisher, ERC2771Context, AccessControlE
     function getPublisherProfileUri(address publisher) public view returns (string memory uri) {
         uri = profileUriOfPublisher[publisher];
         // if not found, check the previous publisher
-        if (bytes(uri).length == 0) {
+        if (bytes(uri).length == 0 && address(prevPublisher) != address(0)) {
             uri = prevPublisher.getPublisherProfileUri(publisher);
         }
     }
@@ -198,7 +204,10 @@ contract ContractPublisher is IContractPublisher, ERC2771Context, AccessControlE
         view
         returns (string[] memory publishedMetadataUris)
     {
-        string[] memory linkedUris = prevPublisher.getPublishedUriFromCompilerUri(compilerMetadataUri);
+        string[] memory linkedUris;
+        if (address(prevPublisher) != address(0)) {
+            linkedUris = prevPublisher.getPublishedUriFromCompilerUri(compilerMetadataUri);
+        }
         uint256 prevTotal = linkedUris.length;
         uint256 currentTotal = compilerMetadataUriToPublishedMetadataUris[compilerMetadataUri].index;
         uint256 total = prevTotal + currentTotal;
