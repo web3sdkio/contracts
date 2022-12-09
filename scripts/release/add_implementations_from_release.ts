@@ -9,6 +9,10 @@ import { chainIdToName } from "./constants";
 const releasedContractName = "Multiwrap";
 const privateKey: string = process.env.DEPLOYER_KEY as string; // should be the correct deployer key
 
+if (!privateKey) {
+  console.log("Deployer key is not configured");
+  return;
+}
 const polygonSDK = Web3sdkioSDK.fromPrivateKey(privateKey, "polygon");
 
 async function main() {
