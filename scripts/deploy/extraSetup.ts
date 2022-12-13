@@ -5,9 +5,11 @@ import {
   ForwarderEOAOnly,
   BiconomyForwarder,
   TWRegistry,
+  Pack,
 } from "typechain";
+import { nativeTokenWrapper } from "../../utils/nativeTokenWrapper";
 
-async function verify(address: string, args: any[]) {
+async function verify(address: string, args: any[], contract: string) {
   try {
     let options = {
       address: address,
@@ -67,11 +69,23 @@ async function main() {
   await twBYOCRegistry.deployed();
   console.log("TWBYOCRegistry address: ", twBYOCRegistry.address);
 
+  // Deploy Pack
+  const chainId: number = hre.network.config.chainId as number;
+  const nativeTokenWrapperAddress: string = nativeTokenWrapper[chainId];
+  const pack = await (
+    await ethers.getContractFactory("Pack")
+  ).deploy(nativeTokenWrapperAddress, forwarderEOAOnly.address, options);
+  // const pack = await ethers.getContractAt("Pack", "0x324CAd44c0d07f96B9de4aef5Dd0086Af61be42F");
+  console.log("Deploying Pack at tx: ", pack.deployTransaction?.hash);
+  await pack.deployed();
+  console.log("Pack address: ", pack.address);
+
   // Verify contracts
   console.log("DONE. Now verifying contracts...");
   await verify(forwarderEOAOnly.address, [], "contracts/forwarder/ForwarderEOAOnly.sol:ForwarderEOAOnly");
   await verify(biconomyForwarder.address, [deployer.address]);
   await verify(twBYOCRegistry.address, [trustedForwarderAddress]);
+  await verify(pack.address, [nativeTokenWrapperAddress, forwarderEOAOnly.address]);
 }
 
 main()

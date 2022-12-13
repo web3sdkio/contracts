@@ -33,8 +33,8 @@ async function main() {
   console.log("Deployer address:", deployer.address);
 
   // Forwarder contract needs to be deployed for the first time
-  // const trustedForwarder = await (await ethers.getContractFactory("ForwarderChainlessDomain")).deploy(options);
-  const trustedForwarder = await ethers.getContractAt("Forwarder", "0x91e373b8Caf9E0E0694099039Ce006aAc5598db2");
+  const trustedForwarder = await (await ethers.getContractFactory("ForwarderChainlessDomain")).deploy(options);
+  // const trustedForwarder = await ethers.getContractAt("Forwarder", "0x91e373b8Caf9E0E0694099039Ce006aAc5598db2");
   console.log("Deploying Trusted Forwarder at tx: ", trustedForwarder.deployTransaction?.hash);
   await trustedForwarder.deployed();
   console.log("Trusted Forwarder address: ", trustedForwarder.address);
