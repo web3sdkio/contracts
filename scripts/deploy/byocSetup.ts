@@ -21,12 +21,12 @@ async function verify(address: string, args: any[]) {
 }
 
 async function main() {
-  // Deploy FeeType
+  // Define options
   const options = {
     //maxFeePerGas: ethers.utils.parseUnits("50", "gwei"),
     //maxPriorityFeePerGas: ethers.utils.parseUnits("50", "gwei"),
     //gasPrice: ethers.utils.parseUnits("100", "gwei"),
-    gasLimit: 3_000_000,
+    gasLimit: 5_000_000,
   };
 
   const [deployer]: SignerWithAddress[] = await ethers.getSigners();
@@ -42,7 +42,7 @@ async function main() {
   // Define the contract address of the previous Publisher. It is zero address by default
   const prevPublisherAddress: string = ethers.constants.AddressZero;
   console.log("Previous Publisher address: ", prevPublisherAddress);
-  
+
   const contractPublisher: ContractPublisher = await ethers
     .getContractFactory("ContractPublisher")
     .then(f => f.deploy(trustedForwarder.address, prevPublisherAddress, options));

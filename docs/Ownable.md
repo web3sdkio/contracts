@@ -4,28 +4,11 @@
 
 > Ownable
 
+Web3sdkio&#39;s `Ownable` is a contract extension to be used with any base contract. It exposes functions for setting and reading           who the &#39;owner&#39; of the inheriting smart contract is, and lets the inheriting contract perform conditional logic that uses           information about who the contract&#39;s owner is.
 
 
-*The Ownable contract has an owner address, and provides basic authorization control functions, this simplifies the implementation of &quot;user permissions&quot;.*
 
 ## Methods
-
-### isOwner
-
-```solidity
-function isOwner() external view returns (bool)
-```
-
-
-
-
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | bool | true if `msg.sender` is the owner of the contract. |
 
 ### owner
 
@@ -33,7 +16,7 @@ function isOwner() external view returns (bool)
 function owner() external view returns (address)
 ```
 
-
+Returns the owner of the contract.
 
 
 
@@ -42,43 +25,32 @@ function owner() external view returns (address)
 
 | Name | Type | Description |
 |---|---|---|
-| _0 | address | the address of the owner. |
+| _0 | address | undefined |
 
-### renounceOwnership
-
-```solidity
-function renounceOwnership() external nonpayable
-```
-
-Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.
-
-*Allows the current owner to relinquish control of the contract.*
-
-
-### transferOwnership
+### setOwner
 
 ```solidity
-function transferOwnership(address newOwner) external nonpayable
+function setOwner(address _newOwner) external nonpayable
 ```
 
+Lets an authorized wallet set a new owner for the contract.
 
 
-*Allows the current owner to transfer control of the contract to a newOwner.*
 
 #### Parameters
 
 | Name | Type | Description |
 |---|---|---|
-| newOwner | address | The address to transfer ownership to. |
+| _newOwner | address | The address to set as the new owner of the contract. |
 
 
 
 ## Events
 
-### OwnershipTransferred
+### OwnerUpdated
 
 ```solidity
-event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+event OwnerUpdated(address indexed prevOwner, address indexed newOwner)
 ```
 
 
@@ -89,7 +61,7 @@ event OwnershipTransferred(address indexed previousOwner, address indexed newOwn
 
 | Name | Type | Description |
 |---|---|---|
-| previousOwner `indexed` | address | undefined |
+| prevOwner `indexed` | address | undefined |
 | newOwner `indexed` | address | undefined |
 
 
