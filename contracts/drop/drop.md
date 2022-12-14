@@ -2,7 +2,7 @@
 
 This is a live document that explains what the [web3sdkio](https://web3sdk.io/) `Drop` smart contracts are, how they work and can be used, and why they are written the way they are.
 
-The document is written for technical and non-technical readers. To ask further questions about any of web3sdkio’s `Drop`, please join the [web3sdkio discord](https://discord.gg/web3sdkio) or create a github issue.
+The document is written for technical and non-technical readers. To ask further questions about any of web3sdkio’s `Drop`, please join the [web3sdkio discord](https://discord.gg/n33UhsfUKB) or create a github issue.
 
 ---
 

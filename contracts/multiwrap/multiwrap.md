@@ -2,7 +2,7 @@
 
 This is a live document that explains what the [web3sdkio](https://web3sdk.io/) `Multiwrap` smart contract is, how it works and can be used, and why it is designed the way it is.
 
-The document is written for technical and non-technical readers. To ask further questions about web3sdkio’s `Multiwrap` contract, please join the [web3sdkio discord](https://discord.gg/web3sdkio) or create a github issue.
+The document is written for technical and non-technical readers. To ask further questions about web3sdkio’s `Multiwrap` contract, please join the [web3sdkio discord](https://discord.gg/n33UhsfUKB) or create a github issue.
 
 ---
 

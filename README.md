@@ -7,7 +7,7 @@
 <p align="center">
 <a href="https://www.npmjs.com/package/@web3sdkio/contracts"><img src="https://img.shields.io/npm/v/@web3sdkio/contracts?color=red&logo=npm" alt="npm version"/></a>
 <a href="https://github.com/web3sdkio/contracts/actions"><img alt="Build Status" src="https://github.com/web3sdkio/contracts/actions/workflows/tests.yml/badge.svg"/></a>
-<a href="https://discord.gg/web3sdkio"><img alt="Join our Discord!" src="https://img.shields.io/discord/834227967404146718.svg?color=7289da&label=discord&logo=discord&style=flat"/></a>
+<a href="https://discord.gg/n33UhsfUKB"><img alt="Join our Discord!" src="https://img.shields.io/discord/834227967404146718.svg?color=7289da&label=discord&logo=discord&style=flat"/></a>
 
 </p>
 <p align="center"><strong>Collection of smart contracts deployable via the web3sdkio SDK, dashboard and CLI</strong></p>
@@ -83,7 +83,7 @@ Release pages for pre-built contracts:
 - [VoteERC20](https://web3sdk.io/deployer.web3sdkio.eth/VoteERC20)
 - [Split](https://web3sdk.io/deployer.web3sdkio.eth/Split)
 
-[Learn more about pre-built contracts](https://portal.web3sdk.io/pre-built-contracts)
+[Learn more about pre-built contracts](https://docs.web3sdk.io/pre-built-contracts)
 
 ## Extensions
 
@@ -93,7 +93,7 @@ Some blocks come packaged together as Base Contracts, which come with a full set
 
 Other (smaller) blocks are Features, which provide a way for you to pick and choose which individual pieces you want to put into your contract; with full customization of how those features work. These are available at `contracts/extension/`.
 
-[Learn more about extensions](https://portal.web3sdk.io/extensions)
+[Learn more about extensions](https://docs.web3sdk.io/extensions)
 
 ## Deployments
 

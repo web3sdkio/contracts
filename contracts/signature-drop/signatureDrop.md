@@ -2,17 +2,17 @@
 
 This is a live document that explains what the [web3sdkio](https://web3sdk.io/) `SignatureDrop` smart contract is, how it works and can be used, and why it is designed the way it is.
 
-The document is written for technical and non-technical readers. To ask further questions about web3sdkio’s `SignatureDrop` contract, please join the [web3sdkio discord](https://discord.gg/web3sdkio) or create a [github issue](https://github.com/web3sdkio/contracts/issues).
+The document is written for technical and non-technical readers. To ask further questions about web3sdkio’s `SignatureDrop` contract, please join the [web3sdkio discord](https://discord.gg/n33UhsfUKB) or create a [github issue](https://github.com/web3sdkio/contracts/issues).
 
 ---
 
 ## Background
 
-The web3sdkio [`Drop`](https://portal.web3sdk.io/contracts/design/Drop) and [signature minting](https://portal.web3sdk.io/contracts/design/SignatureMint) are distribution mechanisms for tokens. 
+The web3sdkio [`Drop`](https://docs.web3sdk.io/contracts/design/Drop) and [signature minting](https://docs.web3sdk.io/contracts/design/SignatureMint) are distribution mechanisms for tokens. 
 
 The `Drop` contracts are meant to be used when the goal of the contract creator is for an audience to come in and claim tokens within certain restrictions e.g. — ‘only addresses in an allowlist can mint tokens’, or ‘minters must pay **x** amount of price in **y** currency to mint’, etc.
 
-Built-in contracts that implement [signature minting](https://portal.web3sdk.io/contracts/design/SignatureMint) are meant to be used when the restrictions around a wallet's minting tokens are not pre-defined, like in `Drop`. With signature minting, a contract creator can set custom restrictions around a token's minting, such as a price, at the very time that a wallet wants to mint tokens.
+Built-in contracts that implement [signature minting](https://docs.web3sdk.io/contracts/design/SignatureMint) are meant to be used when the restrictions around a wallet's minting tokens are not pre-defined, like in `Drop`. With signature minting, a contract creator can set custom restrictions around a token's minting, such as a price, at the very time that a wallet wants to mint tokens.
 
 The `SignatureDrop` contract supports both distribution mechanisms - of drop and signature minting - in the same contract.
 
@@ -35,11 +35,11 @@ The `SignatureDrop` contract supports both distribution mechanisms - of drop and
 
 ### Use cases for `SignatureDrop`
 
-We built our `Drop` contracts for the following [reason](https://portal.web3sdk.io/contracts/design/Drop#why-were-building-drop). The limitation of our `Drop` contracts is that all wallets in an audience attempting to claim tokens are subject to the same restrictions in the single, active claim phase at any moment.
+We built our `Drop` contracts for the following [reason](https://docs.web3sdk.io/contracts/design/Drop#why-were-building-drop). The limitation of our `Drop` contracts is that all wallets in an audience attempting to claim tokens are subject to the same restrictions in the single, active claim phase at any moment.
 
-In the `SignatureDrop` contract, a wallet can now claim tokens [via a signature](https://portal.web3sdk.io/contracts/design/SignatureMint#background) from an authorized wallet, from the same pool of lazy minted tokens which can be claimed via the `Drop` mechanism. This means a contract owner can now set custom restrictions for a wallet to claim tokens, that may be different from the active claim phase at the time.
+In the `SignatureDrop` contract, a wallet can now claim tokens [via a signature](https://docs.web3sdk.io/contracts/design/SignatureMint#background) from an authorized wallet, from the same pool of lazy minted tokens which can be claimed via the `Drop` mechanism. This means a contract owner can now set custom restrictions for a wallet to claim tokens, that may be different from the active claim phase at the time.
 
-An example of using this added feature of the `SignatureDrop` contract is when you want to maintain an allowlist off-chain i.e. not in the claim phase details, which are stored on-chain, and difficult to update once set. The contract's claim phase can define a common set of restrictions that any wallet not in your allowlist will mint tokens under. And using [signature minting](https://portal.web3sdk.io/contracts/design/SignatureMint), you can apply custom restrictions around minting, such as a price, currency and so on, on a per wallet basis, for wallets in your off-chain allowlist.
+An example of using this added feature of the `SignatureDrop` contract is when you want to maintain an allowlist off-chain i.e. not in the claim phase details, which are stored on-chain, and difficult to update once set. The contract's claim phase can define a common set of restrictions that any wallet not in your allowlist will mint tokens under. And using [signature minting](https://docs.web3sdk.io/contracts/design/SignatureMint), you can apply custom restrictions around minting, such as a price, currency and so on, on a per wallet basis, for wallets in your off-chain allowlist.
 
 ## Technical Details
 
@@ -184,7 +184,7 @@ function setClaimConditions(
 | _condition | ClaimCondition | Defines restrictions around claiming lazy minted tokens. |
 | resetClaimEligibility | bool | Whether to reset lastClaimTimestamp and usedAllowlistSpot values when setting a claim conditions. |
 
-You can read into the technical details of setting claim conditions in the [`Drop` design document](https://portal.web3sdk.io/contracts/design/Drop#setting-claim-conditions).
+You can read into the technical details of setting claim conditions in the [`Drop` design document](https://docs.web3sdk.io/contracts/design/Drop#setting-claim-conditions).
 
 
 ### Claiming tokens via `Drop`
