@@ -1,7 +1,7 @@
 {
   "name": "@web3sdkio/contracts",
   "description": "Collection of smart contracts deployable via the web3sdkio SDK, dashboard and CLI",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
