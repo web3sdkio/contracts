@@ -13,6 +13,9 @@ import {
   TokenERC721,
   TWFee,
   VoteERC20,
+  AirdropERC20,
+  AirdropERC721,
+  AirdropERC1155,
 } from "typechain";
 import { nativeTokenWrapper } from "../../utils/nativeTokenWrapper";
 
@@ -166,6 +169,33 @@ async function main() {
   console.log("SignatureDrop address: ", sigdrop.address);
   // const sigdrop = await ethers.getContractAt("SignatureDrop", "0xFDb9cc34BfA6a51e96F73f0a828717A6dfA460E8");
 
+  // AirdropERC20
+  const airdropERC20: AirdropERC20 = await ethers
+    .getContractFactory("AirdropERC20")
+    .then(f => f.deploy(options))
+    .then(f => f.deployed());
+  console.log("Deploying AirdropERC20 at tx: ", airdropERC20.deployTransaction.hash);
+  console.log("AirdropERC20 address: ", airdropERC20.address);
+  // const airdropERC20 = await ethers.getContractAt("AirdropERC20", "0xFDb9cc34BfA6a51e96F73f0a828717A6dfA460E8");
+
+  // AirdropERC721
+  const airdropERC721: AirdropERC721 = await ethers
+    .getContractFactory("AirdropERC721")
+    .then(f => f.deploy(options))
+    .then(f => f.deployed());
+  console.log("Deploying AirdropERC721 at tx: ", airdropERC721.deployTransaction.hash);
+  console.log("AirdropERC721 address: ", airdropERC721.address);
+  // const airdropERC721 = await ethers.getContractAt("AirdropERC721", "0xFDb9cc34BfA6a51e96F73f0a828717A6dfA460E8");
+
+  // AirdropERC1155
+  const airdropERC1155: AirdropERC1155 = await ethers
+    .getContractFactory("AirdropERC1155")
+    .then(f => f.deploy(options))
+    .then(f => f.deployed());
+  console.log("Deploying AirdropERC1155 at tx: ", airdropERC1155.deployTransaction.hash);
+  console.log("AirdropERC1155 address: ", airdropERC1155.address);
+  // const airdropERC1155 = await ethers.getContractAt("AirdropERC1155", "0xFDb9cc34BfA6a51e96F73f0a828717A6dfA460E8");
+
   // TODO Pack
 
   const tx = await web3sdkioFactory.multicall(
@@ -181,6 +211,9 @@ async function main() {
       web3sdkioFactory.interface.encodeFunctionData("addImplementation", [vote.address]),
       web3sdkioFactory.interface.encodeFunctionData("addImplementation", [multiwrap.address]),
       web3sdkioFactory.interface.encodeFunctionData("addImplementation", [sigdrop.address]),
+      web3sdkioFactory.interface.encodeFunctionData("addImplementation", [airdropERC20.address]),
+      web3sdkioFactory.interface.encodeFunctionData("addImplementation", [airdropERC721.address]),
+      web3sdkioFactory.interface.encodeFunctionData("addImplementation", [airdropERC1155.address]),
     ],
     options,
   );
@@ -207,6 +240,9 @@ async function main() {
   await verify(vote.address, []);
   await verify(multiwrap.address, [nativeTokenWrapper[ethers.provider.network.chainId]]);
   await verify(sigdrop.address, []);
+  await verify(airdropERC20.address, []);
+  await verify(airdropERC721.address, []);
+  await verify(airdropERC1155.address, []);
 }
 
 main()
