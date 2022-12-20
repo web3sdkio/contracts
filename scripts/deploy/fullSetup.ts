@@ -402,8 +402,8 @@ var deployContracts = {
     },
     "needPack": true,
     "needVerify": true,
-    "packed": false,
-    "verified": false,
+    "packed": true,
+    "verified": true,
   },
   "AirdropERC721": {
     "className": "AirdropERC721",
@@ -425,8 +425,8 @@ var deployContracts = {
     },
     "needPack": true,
     "needVerify": true,
-    "packed": false,
-    "verified": false,
+    "packed": true,
+    "verified": true,
   },
   "AirdropERC1155": {
     "className": "AirdropERC1155",
@@ -448,8 +448,8 @@ var deployContracts = {
     },
     "needPack": true,
     "needVerify": true,
-    "packed": false,
-    "verified": false,
+    "packed": true,
+    "verified": true,
   },
 };
 var needToPacks = [];
